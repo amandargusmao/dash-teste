@@ -31,23 +31,28 @@
       top: 10px;
       right: 10px;
       z-index: 10;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border: none;
       border-radius: 6px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.3);
       color: white;
       cursor: pointer;
       font-size: 14px;
-      transition: background 0.2s;
+      opacity: 0;
+      transition: opacity 0.3s, background 0.2s;
     }
     #fullscreen-btn:hover {
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.6);
+    }
+    /* Aparece apenas ao passar o mouse sobre o container */
+    #container:hover #fullscreen-btn {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <button id="fullscreen-btn">⛶ Tela cheia</button>
+    <button id="fullscreen-btn">⛶</button>
     <iframe 
       id="reportFrame"
       title="Observatório IPLAM" 
