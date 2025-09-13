@@ -63,17 +63,6 @@
     btn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
         container.requestFullscreen();
-        btn.textContent = "❌ Sair da tela cheia";
-      } else {
-        document.exitFullscreen();
-        btn.textContent = "⛶ Tela cheia";
-      }
-    });
-
-    // Atualiza o texto do botão quando sai do fullscreen
-    document.addEventListener("fullscreenchange", () => {
-      if (!document.fullscreenElement) {
-        btn.textContent = "⛶ Tela cheia";
       }
     });
   </script>
