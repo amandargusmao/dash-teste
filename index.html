@@ -11,6 +11,12 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      position: relative;
+      height: 100%;
+      width: 100%;
     }
     iframe {
       position: absolute;
@@ -20,13 +26,56 @@
       height: 100%;
       border: none;
     }
+    #fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    #fullscreen-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
   </style>
 </head>
 <body>
-  <iframe 
-    title="Observatório IPLAM" 
-    src="https://app.powerbi.com/reportEmbed?reportId=84aea429-4dd4-49d0-968b-3de20528670a&autoAuth=true&ctid=903a2308-bea5-43cb-9ef3-f20f3923aca2" 
-    allowFullScreen="true">
-  </iframe>
+  <div id="container">
+    <button id="fullscreen-btn">⛶ Tela cheia</button>
+    <iframe 
+      id="reportFrame"
+      title="Observatório IPLAM" 
+      src="https://app.powerbi.com/reportEmbed?reportId=84aea429-4dd4-49d0-968b-3de20528670a&autoAuth=true&ctid=903a2308-bea5-43cb-9ef3-f20f3923aca2&navContentPaneEnabled=false&filterPaneEnabled=false" 
+      allowFullScreen="true">
+    </iframe>
+  </div>
+
+  <script>
+    const btn = document.getElementById("fullscreen-btn");
+    const container = document.getElementById("container");
+
+    btn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        container.requestFullscreen();
+        btn.textContent = "❌ Sair da tela cheia";
+      } else {
+        document.exitFullscreen();
+        btn.textContent = "⛶ Tela cheia";
+      }
+    });
+
+    // Atualiza o texto do botão quando sai do fullscreen
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        btn.textContent = "⛶ Tela cheia";
+      }
+    });
+  </script>
 </body>
 </html>
