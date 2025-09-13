@@ -13,11 +13,13 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
+
     #container {
       position: relative;
       height: 100%;
       width: 100%;
     }
+
     iframe {
       position: absolute;
       top: 0;
@@ -26,33 +28,44 @@
       height: 100%;
       border: none;
     }
-    #fullscreen-btn {
+
+    /* Zona de ativação do botão */
+    #fullscreen-zone {
       position: absolute;
       top: 10px;
       right: 10px;
+      width: 40px; /* área pequena para ativar o botão */
+      height: 40px;
       z-index: 10;
-      padding: 6px 10px;
+    }
+
+    /* Botão dentro da zona */
+    #fullscreen-btn {
+      width: 100%;
+      height: 100%;
+      padding: 0;
       border: none;
       border-radius: 6px;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0,0,0,0.3);
       color: white;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       opacity: 0;
       transition: opacity 0.3s, background 0.2s;
     }
-    #fullscreen-btn:hover {
-      background: rgba(0, 0, 0, 0.6);
-    }
-    /* Aparece apenas ao passar o mouse sobre o container */
-    #container:hover #fullscreen-btn {
+
+    /* Aparece apenas ao passar o mouse na zona */
+    #fullscreen-zone:hover #fullscreen-btn {
       opacity: 1;
+      background: rgba(0,0,0,0.6);
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <button id="fullscreen-btn">⛶</button>
+    <div id="fullscreen-zone">
+      <button id="fullscreen-btn">⛶</button>
+    </div>
     <iframe 
       id="reportFrame"
       title="Observatório IPLAM" 
